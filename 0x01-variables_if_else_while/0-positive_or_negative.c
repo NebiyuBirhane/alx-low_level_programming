@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
 /* main -determine if a nuber is postive or negative or zero. */
 
 /* Return :Always 0 (sucess). */
