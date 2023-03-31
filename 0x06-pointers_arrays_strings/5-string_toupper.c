@@ -7,14 +7,36 @@
  */
 char *string_toupper(char *)
 {
-	int i;
+	int index;
 
-	i = 0;
-	while (n[i] != '\0')
+	index = 0;
+	while (str[index])
 	{
-		if (n[i] >= 'a' && n[i] <= 'z')
-			n[i] = n[i] - 32;
-		i++;
+		if (str[index] >= 'a' && str[index] <= 'z' && index == 0)
+			str[index] = str[index] - 32;
+
+		if (str[index] >= 'a' && str[index] <= 'z' && index > 0)
+		{
+			switch (str[index - 1])
+			{
+				case ',':
+				case ';':
+				case '.':
+				case '!':
+				case '?':
+				case '"':
+				case '(':
+				case ')':
+				case '{':
+				case '}':
+				case ' ':
+				case '\n':
+				case '\t':
+					str[index] = str[index] - 32;
+					break;
+			}
+		}
+		index++;
 	}
-	return (n);
+	return (str);
 }
