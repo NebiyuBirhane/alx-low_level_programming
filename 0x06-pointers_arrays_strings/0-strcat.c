@@ -8,22 +8,41 @@
  */
 char *_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
+	int index_src, index_dest, length_src, length_dest, src_end, dest_end;
 
-	i = 0;
-	while (dest[i] != '\0')
+	src_end = dest_end = length_src = length_dest = 0;
+	index_src = index_dest = 0;
+	while (1)
 	{
-		i++;
+		if (src_end == 1 && dest_end == 1)
+			break;
+
+		if (*(src + index_src) == '\0')
+		{
+			src_end = 1;
+		}
+		else
+		{
+			length_src++;
+			index_src++;
+		}
+
+		if (*(dest + index_dest) == '\0')
+		{
+			dest_end = 1;
+		}
+		else
+		{
+			length_dest++;
+			index_dest++;
+		}
 	}
-	j = 0;
-	while (src[i] != '\0')
+
+	for (index_src = 0; index_src < length_src; index_src++)
 	{
-		desr[i] = src[j];
-		i++;
-		j++;
+		*(dest + (index_dest + index_src)) = *(src + index_src);
 	}
-	dest[i] = '\0';
+
 	return (dest);
 }
 
